@@ -20,9 +20,7 @@
   <div class="container relative max-w-full h-screen flex flex-col p-5">
     <div class="h-4/5" :class="{ accepted: isAccepted }">
       <img
-        :src="
-          isAccepted ? '/src/assets/vlt_card.png' : '/src/assets/vlt_ask.png'
-        "
+        :src="isAccepted ? '/public/vlt_card.png' : '/public/vlt_ask.png'"
         class="h-full w-auto mx-auto custom-transition"
       />
 
