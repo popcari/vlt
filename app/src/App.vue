@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from "vue";
+  import { ref, computed } from "vue";
 
   // Initialize position with default values
   const positionX = ref(null);
@@ -14,13 +14,22 @@
     positionX.value = Math.floor(Math.random() * 80);
     positionY.value = Math.floor(Math.random() * 80);
   };
+  // this solution will make sure that deploy not remove image
+  const img1 = computed(() => {
+    const path = new URL("/src/assets/vlt_card.png", import.meta.url);
+    return `${path}`;
+  });
+  const img2 = computed(() => {
+    const path = new URL("/src/assets/vlt_ask.png", import.meta.url);
+    return `${path}`;
+  });
 </script>
 
 <template>
   <div class="container relative max-w-full h-screen flex flex-col p-5">
     <div class="h-4/5" :class="{ accepted: isAccepted }">
       <img
-        :src="isAccepted ? '/public/vlt_card.png' : '/public/vlt_ask.png'"
+        :src="isAccepted ? img1 : img2"
         class="h-full w-auto mx-auto custom-transition"
       />
 
